@@ -50,7 +50,7 @@ sf = sf.rename(columns={'geometry': 'geometry','rgn17nm':'RegionName'}).set_geom
 # Change neighborhood id (subdist_no) for correct code for Mount Davidson Manor and for parks
 
 # This dictionary contains the formatting for the data in the plots
-format_data = [('price', 0, 1000000,'0,0', 'price')]
+format_data = [('price', 0, 600000,'0,0', 'price')]
  
 #Create a DataFrame object from the dictionary 
 format_df = pd.DataFrame(format_data, columns = ['field' , 'min_range', 'max_range' , 'format', 'verbage'])

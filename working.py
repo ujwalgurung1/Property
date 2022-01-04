@@ -154,7 +154,7 @@ hover = HoverTool(tooltips = [ ('RegionName','@RegionName'),
 p = make_plot(input_field)
 
 # Make a slider object: slider 
-slider = Slider(title = 'year',start = 2000, end = 2018, step = 1, value = 2018)
+slider = Slider(title = 'year',start = 1995, end = 2021, step = 1, value = 2021)
 slider.on_change('value', update_plot)
 
 # Make a selection object: select

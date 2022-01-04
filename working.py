@@ -137,7 +137,7 @@ def make_plot(field_name):
     
 # Input geojson source that contains features for plotting for:
 # initial year 2018 and initial criteria sale_price_median
-geosource = GeoJSONDataSource(geojson = json_data(2018))
+geosource = GeoJSONDataSource(geojson = json_data(2021))
 input_field = 'price'
 
 # Define a sequential multi-hue color palette.

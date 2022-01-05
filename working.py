@@ -116,7 +116,7 @@ def make_plot(field_name):
   # Create figure object.
   verbage = format_df.loc[format_df['field'] == field_name, 'verbage'].iloc[0]
 
-  p = figure(title = verbage + ' by Neighborhood for Single Family Homes in SF by Year - 2009 to 2018', 
+  p = figure(title = verbage + ' by Region in England by Year - 1995 to 2021', 
              plot_height = 650, plot_width = 850,
              toolbar_location = None)
   p.xgrid.grid_line_color = None

@@ -34,11 +34,11 @@ from bokeh.io.doc import curdoc
 from bokeh.models import Slider, HoverTool, Select
 from bokeh.layouts import widgetbox, row, column
 
-neighborhood_data = pd.read_csv('https://raw.githubusercontent.com/ujwalgurung1/ujwalgurung1.github.io/main/working.csv')
+neighborhood_data = pd.read_csv('https://raw.githubusercontent.com/ujwalgurung1/ujwalgurung1.github.io/main/project/data/HousePricesCholoropleth.csv')
 neighborhood_data = neighborhood_data.rename(columns={'regionname': 'RegionName','year1':'year', 'houseregionmedianprice':'price'})
 
 # Read the geojson map file for Realtor Neighborhoods into a GeoDataframe object
-sf = geopandas.read_file('https://raw.githubusercontent.com/ujwalgurung1/ujwalgurung1.github.io/main/Regions_(December_2017)_Boundaries.geojson')
+sf = geopandas.read_file('https://raw.githubusercontent.com/ujwalgurung1/ujwalgurung1.github.io/main/project/data/boundaries.geojson')
 
 # Set the Coordinate Referance System (crs) for projections
 # ESPG code 4326 is also referred to as WGS84 lat-long projection
@@ -50,7 +50,7 @@ sf = sf.rename(columns={'geometry': 'geometry','rgn17nm':'RegionName'}).set_geom
 # Change neighborhood id (subdist_no) for correct code for Mount Davidson Manor and for parks
 
 # This dictionary contains the formatting for the data in the plots
-format_data = [('price', 0, 600000,'0,0', 'price')]
+format_data = [('price', 40000, 600000,'0,0', 'price')]
  
 #Create a DataFrame object from the dictionary 
 format_df = pd.DataFrame(format_data, columns = ['field' , 'min_range', 'max_range' , 'format', 'verbage'])
@@ -158,7 +158,7 @@ slider = Slider(title = 'year',start = 1995, end = 2021, step = 1, value = 2021)
 slider.on_change('value', update_plot)
 
 # Make a selection object: select
-select = Select(title='Select Criteria:', value='price', options=['price'])
+select = Select(title='Select Criteria:', value='price', options=['Regional House Prices'])
 select.on_change('value', update_plot)
 
 # Make a column layout of widgetbox(slider) and plot, and add it to the current document

@@ -41,13 +41,12 @@ neighborhood_data = neighborhood_data.rename(columns={'regionname': 'RegionName'
 sf = geopandas.read_file('https://raw.githubusercontent.com/ujwalgurung1/ujwalgurung1.github.io/main/project/data/boundaries.geojson')
 
 # Set the Coordinate Referance System (crs) for projections
-# ESPG code 4326 is also referred to as WGS84 lat-long projection
 sf.crs = {'init': 'epsg:4326'}
 
 # Rename columns in geojson map file
 sf = sf.rename(columns={'geometry': 'geometry','rgn17nm':'RegionName'}).set_geometry('geometry')
 
-# Change neighborhood id (subdist_no) for correct code for Mount Davidson Manor and for parks
+
 
 # This dictionary contains the formatting for the data in the plots
 format_data = [('price', 40000, 600000,'0,0', 'price')]
@@ -62,7 +61,7 @@ def json_data(selectedYear):
     # Pull selected year from neighborhood summary data
     df_yr = neighborhood_data[neighborhood_data['year'] == yr]
     
-    # Merge the GeoDataframe object (sf) with the neighborhood summary data (neighborhood)
+    # Merge the GeoDataframe object (sf) with raw data
     merged = pd.merge(sf, df_yr, on='RegionName', how='left')
     
     # Fill the null values
@@ -164,10 +163,7 @@ select.on_change('value', update_plot)
 # Make a column layout of widgetbox(slider) and plot, and add it to the current document
 # Display the current document
 layout = column(p, widgetbox(select), widgetbox(slider))
-curdoc().add_root(layout)
 
-# Use the following code to test in a notebook, comment out for transfer to live site
-# Interactive features will not show in notebook
 #output_notebook()
 #show(p)
 
